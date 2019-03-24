@@ -37,6 +37,8 @@ jobs:
       # - run: yarn test
 
       - run:
+          name: 'Build Project'
           command: 'yarn build'
       - run:
-          command: './node_modules/.bin/firebase deploy --token=$FIREBASE_TOKEN' --project=ema-lorenzo
+          name: 'Deploy to Firebase Hosting'
+          command: './node_modules/.bin/firebase deploy --token=$FIREBASE_TOKEN --project=ema-lorenzo'
