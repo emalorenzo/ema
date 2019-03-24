@@ -1,15 +1,14 @@
 import React, { useContext } from 'react';
-import ThemeContext, { themes } from './ThemeProvider';
+import IconButton from '@material-ui/core/IconButton';
+import Icon from '@material-ui/core/Icon';
+import ThemeContext from './ThemeProvider';
 
 const ThemeSwitchButton = () => {
-  const { theme, setTheme } = useContext(ThemeContext);
-  function switchTheme() {
-    setTheme(theme.name === 'dark' ? themes.light : themes.dark);
-  }
+  const { switchTheme } = useContext(ThemeContext);
   return (
-    <button onClick={switchTheme} type="button">
-      Change Theme
-    </button>
+    <IconButton onClick={switchTheme}>
+      <Icon>invert_colors</Icon>
+    </IconButton>
   );
 };
 

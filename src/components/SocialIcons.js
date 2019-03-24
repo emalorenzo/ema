@@ -6,12 +6,12 @@ import {
   faGithub, faLinkedin, faInstagram, faFacebook,
 } from '@fortawesome/free-brands-svg-icons';
 
-const SocialIcons = styled.div`
+const SocialIconsContainer = styled.div`
 
 `;
 
-export default () => (
-  <SocialIcons>
+const SocialIcons = () => (
+  <SocialIconsContainer>
     <IconButton target="_blank" href="https://github.com/emaLorenzo">
       <FontAwesomeIcon icon={faGithub} />
     </IconButton>
@@ -24,5 +24,7 @@ export default () => (
     <IconButton target="_blank" href="https://www.facebook.com/aemalorenzo">
       <FontAwesomeIcon icon={faFacebook} />
     </IconButton>
-  </SocialIcons>
+  </SocialIconsContainer>
 );
+
+export default SocialIcons;
