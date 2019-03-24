@@ -53,7 +53,7 @@ const Root = () => {
       style={{ transform: springProps.xys.interpolate(trans) }}
     >
       <Typography component="h2" variant="h1" gutterBottom>
-        Hi!
+        Hi! a
       </Typography>
       <Typography variant="h5" gutterBottom>
         I am Emanuel Lorenzo, a mobile developer
