@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { createMuiTheme } from '@material-ui/core/styles';
 
-const themes = {
+export const themes = {
   dark: createMuiTheme({
     name: 'dark',
     palette: {
@@ -26,14 +26,8 @@ const ThemeContext = React.createContext(themes.dark);
 
 export const ThemeProvider = (props) => {
   const [theme, setTheme] = useState(themes.dark);
-  function switchTheme() {
-    setTheme(theme.name === 'dark' ? themes.light : themes.dark);
-  }
   return (
-    <ThemeContext.Provider value={theme}>
-      <button onClick={() => setTheme(switchTheme)} type="button">
-        Change
-      </button>
+    <ThemeContext.Provider value={{ theme, setTheme }}>
       {props.children}
     </ThemeContext.Provider>
   );
