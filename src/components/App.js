@@ -1,16 +1,14 @@
 import React from 'react';
 import { MuiThemeProvider } from '@material-ui/core/styles';
-import Card from './Card';
 import ThemeContext, { ThemeProvider } from './ThemeProvider';
-import ThemeSwitchButton from './ThemeSwitchButton';
+import Root from './Root';
 
 const App = () => (
   <ThemeProvider>
     <ThemeContext.Consumer>
       {({ theme }) => (
         <MuiThemeProvider theme={theme}>
-          <Card />
-          <ThemeSwitchButton />
+          <Root />
         </MuiThemeProvider>
       )}
     </ThemeContext.Consumer>
