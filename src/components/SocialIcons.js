@@ -7,7 +7,8 @@ import {
 } from '@fortawesome/free-brands-svg-icons';
 
 const SocialIconsContainer = styled.div`
-
+  display: flex;
+  flex-direction: row;
 `;
 
 const SocialIcons = () => (

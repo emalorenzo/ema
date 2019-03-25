@@ -8,6 +8,7 @@ export const themes = {
       type: 'dark',
     },
     typography: {
+      fontFamily: '"Product Sans", serif',
       useNextVariants: true,
     },
     rootBackground: 'linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%)',
@@ -19,10 +20,11 @@ export const themes = {
       type: 'light',
     },
     typography: {
+      fontFamily: '"Product Sans", serif',
       useNextVariants: true,
     },
     rootBackground: 'linear-gradient(-225deg, #E3FDF5 0%, #FFE6FA 100%)',
-    cardBackground: 'white'
+    cardBackground: 'linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%)',
   }),
 };
 

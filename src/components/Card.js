@@ -16,9 +16,9 @@ const CardContainer = styled(animated.div)`
   transition: box-shadow 0.5s;
   will-change: transform;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: stretch;
   position: relative;
   overflow: hidden;
 
@@ -32,11 +32,22 @@ const BackgroundImage = styled.img`
   object-fit: fill;
 `
 const ContentContainer = styled.div`
-  position: absolute;
+  height: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+  padding: 10px 50px;
+`
+const SocialIconsContainer = styled.div`
+  flex: 0;
+  align-self: flex-end;
+  padding: 20px;
+`
+const Title = styled(Typography)`
+  position: relative;
+  left: -5px;
 `
 
 // eslint-disable-next-line no-undef
@@ -59,17 +70,19 @@ const Card = () => {
     >
       <BackgroundImage
         src={EmaLooking}
-        alt="pepe"
+        alt="Here should be an image of me"
       />
       <ContentContainer>
-        <Typography component="h2" variant="h1" gutterBottom>
+        <Title variant="h1">
           Hi!
+        </Title>
+        <Typography variant="h5">
+          {"I'm Emanuel Lorenzo"}
         </Typography>
-        <Typography variant="h5" gutterBottom>
-          I am Emanuel Lorenzo, a mobile developer
-        </Typography>
-        <SocialIcons />
       </ContentContainer>
+      <SocialIconsContainer>
+        <SocialIcons />
+      </SocialIconsContainer>
     </CardContainer>
   );
 };
