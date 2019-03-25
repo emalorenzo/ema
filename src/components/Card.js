@@ -79,6 +79,9 @@ const Card = () => {
         <Typography variant="h5">
           {"I'm Emanuel Lorenzo"}
         </Typography>
+        <Typography variant="h5">
+          {"Mobile & Web Developer"}
+        </Typography>
       </ContentContainer>
       <SocialIconsContainer>
         <SocialIcons />
