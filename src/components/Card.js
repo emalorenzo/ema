@@ -1,92 +1,109 @@
-import React, { useContext } from 'react';
-import styled from 'styled-components';
-import { useSpring, animated } from 'react-spring';
+import React from 'react';
 import Typography from '@material-ui/core/Typography';
-import EmaLooking from '../images/ema_looking.png';
-import SocialIcons from './SocialIcons';
-import ThemeContext from './ThemeProvider';
+import { makeStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
+import Box from '@material-ui/core/Box';
+import Button from '@material-ui/core/Button';
+import Badge from '@material-ui/core/Badge';
+import Avatar from '@material-ui/core/Avatar';
+import amber from '@material-ui/core/colors/amber';
+import IconButton from '@material-ui/core/IconButton';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faReact } from '@fortawesome/free-brands-svg-icons';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import EmaFormal from '../images/ema_formal.jpg';
+import ReactIcon from '../images/reactIcon.png';
+import ReduxIcon from '../images/redux.png';
+import ReduxSagaIcon from '../images/redux_saga.png';
+import AndroidIcon from '../images/android.png';
 
-const CardContainer = styled(animated.div)`
-  width: 100ch;
-  height: 60ch;
-  border-radius: 20px;
-  background-size: cover;
-  background-position: center center;
-  box-shadow: 0px 10px 30px -5px rgba(0, 0, 0, 0.3);
-  transition: box-shadow 0.5s;
-  will-change: transform;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: stretch;
-  position: relative;
-  overflow: hidden;
-
-  &:hover {
-    box-shadow: 0px 30px 100px -10px rgba(0, 0, 0, 0.4);
+const useStyles = makeStyles(theme => ({
+  avatar: {
+    width: theme.spacing(12),
+    height: theme.spacing(12),
+    objectFit: "cover",
+    borderRadius: '50%',
+  },
+  card: {
+    width: '50vw',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center center',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'flex-start',
+    overflow: 'hidden',
+    borderRadius: theme.spacing(2),
+    background: theme.cardBackground,
+    padding: theme.spacing(8),
+  },
+  namesContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start',
+    padding: `0 ${theme.spacing(2)}px`,
+  },
+  knowMoreButton: {
+    alignSelf: 'flex-end',
+    marginTop: theme.spacing(2),
+  },
+  availability: {
+    backgroundColor: props => props.color,
+  },
+  techIcon: {
+    marginRight: theme.spacing(1),
+    padding: theme.spacing(1),
+    backgroundColor: 'rgba(226,209,195, 0.2)',
   }
-`;
-const BackgroundImage = styled.img`
-  height: 100%;
-  align-self: flex-start;
-  object-fit: fill;
-`
-const ContentContainer = styled.div`
-  height: 100%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 10px 50px;
-`
-const SocialIconsContainer = styled.div`
-  flex: 0;
-  align-self: flex-end;
-  padding: 20px;
-`
-const Title = styled(Typography)`
-  position: relative;
-  left: -5px;
-`
-
-// eslint-disable-next-line no-undef
-const calc = (x, y) => [-(y - window.innerHeight / 2) / 20, (x - window.innerWidth / 2) / 20, 1.03];
-const trans = (x, y, s) => `perspective(1000px) rotateX(${x / 4}deg) rotateY(${y / 4}deg) scale(${s})`;
+}));
 
 const Card = () => {
-  const [springProps, set] = useSpring(
-    () => ({ xys: [0, 0, 1], config: { mass: 5, tension: 350, friction: 40 } }),
-  );
-  const { theme } = useContext(ThemeContext);
+  const styles = useStyles({ color: amber[500] });
   return (
-    <CardContainer
-      onMouseMove={({ clientX: x, clientY: y }) => set({ xys: calc(x, y) })}
-      onMouseLeave={() => set({ xys: [0, 0, 1] })}
-      style={{
-        transform: springProps.xys.interpolate(trans),
-        background: theme.cardBackground
-      }}
-    >
-      <BackgroundImage
-        src={EmaLooking}
-        alt="Here should be an image of me"
-      />
-      <ContentContainer>
-        <Title variant="h1">
-          Hi!
-        </Title>
-        <Typography variant="h5">
-          {"I'm Emanuel Lorenzo"}
-        </Typography>
-        <Typography variant="h5">
-          {"Mobile & Web Developer"}
-        </Typography>
-      </ContentContainer>
-      <SocialIconsContainer>
-        <SocialIcons />
-      </SocialIconsContainer>
-    </CardContainer>
+    <Paper elevation={2} className={styles.card}>
+      <Box display="flex" flexDirection="row" justifyContent="space-between" alignSelf="stretch">
+        <Box display="flex" flexDirection="row" alignItems="center" pb={2}> 
+          <img alt="Ema Lorenzo" src={EmaFormal} className={styles.avatar} />
+          <div className={styles.namesContainer}>
+            <Typography variant="h5">
+              Emanuel Lorenzo
+            </Typography>
+            <Typography variant="overline">
+              Senior Mobile Engineer
+            </Typography>
+          </div>
+        </Box>
+        <Box display="flex" alignSelf="flex-start" flexDirection="column" alignItems="flex-end">
+          <Box display="flex" flexDirection="row" alignItems="center">
+            <Badge variant="dot" classes={{ badge: styles.availability }} />
+            <Typography variant="subtitle2">
+              <Box ml={1} fontSize={11}>
+                Available for part-time
+              </Box>
+            </Typography>
+          </Box>
+          <Typography variant="subtitle1">
+            <Box ml={1} fontSize={11}>
+              Buenos Aires, Argentina
+            </Box>
+          </Typography>
+        </Box>
+      </Box>
+      <Typography variant="body1">
+        I am a versatile software engineer with large experience working with mobile technologies. My career started with native Android, then went to web with React and now I am merging the best of both with React Native. I have experience leading teams, and am always looking for create a great business culture.
+      </Typography>
+      <Button variant="outlined" className={styles.knowMoreButton}>
+        Know more
+        <ChevronRightIcon />
+      </Button>
+      <Box display="flex" flexDirection="row">
+        <Avatar alt="Ema Lorenzo" src={ReactIcon} className={styles.techIcon} />
+        <Avatar alt="Ema Lorenzo" src={ReduxIcon} className={styles.techIcon} />
+        <Avatar alt="Ema Lorenzo" src={ReduxSagaIcon} className={styles.techIcon} />
+        <Avatar alt="Ema Lorenzo" src={AndroidIcon} className={styles.techIcon} />
+      </Box>
+    </Paper>
   );
 };
 

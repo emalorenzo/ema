@@ -4,6 +4,7 @@ import { createMuiTheme } from '@material-ui/core/styles';
 export const themes = {
   dark: createMuiTheme({
     name: 'dark',
+    spacing: 8,
     palette: {
       type: 'dark',
     },
@@ -16,6 +17,7 @@ export const themes = {
   }),
   light: createMuiTheme({
     name: 'light',
+    spacing: 8,
     palette: {
       type: 'light',
     },
@@ -23,7 +25,7 @@ export const themes = {
       fontFamily: '"Roboto", serif',
       useNextVariants: true,
     },
-    rootBackground: 'linear-gradient(-225deg, #E3FDF5 0%, #FFE6FA 100%)',
+    rootBackground: 'linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%)',
     cardBackground: 'linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%)',
   }),
 };
@@ -34,7 +36,7 @@ export const ThemeProvider = (props) => {
   function switchTheme(theme, setTheme) {
     setTheme(theme.name === 'dark' ? themes.light : themes.dark);
   }
-  const [theme, setTheme] = useState(themes.dark);
+  const [theme, setTheme] = useState(themes.light);
   const themeContext = {
     theme,
     switchTheme: () => switchTheme(theme, setTheme),

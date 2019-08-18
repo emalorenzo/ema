@@ -1,5 +1,6 @@
 import React from 'react';
-import { MuiThemeProvider } from '@material-ui/core/styles';
+import { ThemeProvider as MuiThemeProvider } from '@material-ui/styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
 import ThemeContext, { ThemeProvider } from './ThemeProvider';
 import Root from './Root';
 
@@ -8,6 +9,7 @@ const App = () => (
     <ThemeContext.Consumer>
       {({ theme }) => (
         <MuiThemeProvider theme={theme}>
+          <CssBaseline />
           <Root />
         </MuiThemeProvider>
       )}

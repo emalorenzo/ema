@@ -1,18 +1,13 @@
 import React from 'react';
-import styled from 'styled-components';
 import IconButton from '@material-ui/core/IconButton';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faGithub, faLinkedin, faInstagram, faFacebook,
 } from '@fortawesome/free-brands-svg-icons';
-
-const SocialIconsContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-`;
+import Box from '@material-ui/core/Box';
 
 const SocialIcons = () => (
-  <SocialIconsContainer>
+  <Box display="flex" flexDirection="row">
     <IconButton target="_blank" href="https://github.com/emaLorenzo">
       <FontAwesomeIcon icon={faGithub} />
     </IconButton>
@@ -25,7 +20,7 @@ const SocialIcons = () => (
     <IconButton target="_blank" href="https://www.facebook.com/aemalorenzo">
       <FontAwesomeIcon icon={faFacebook} />
     </IconButton>
-  </SocialIconsContainer>
+  </Box>
 );
 
 export default SocialIcons;
