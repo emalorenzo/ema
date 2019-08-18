@@ -10,8 +10,7 @@ import { ThemeProvider } from '@material-ui/styles';
 
 import Card from './Card';
 import ThemeSwitchButton from './ThemeSwitchButton';
-import ThemeContext, { themes } from './ThemeProvider';
-import SocialIcons from './SocialIcons';
+import { themes } from './ThemeProvider';
 import Green from '../images/green.png';
 import Orange from '../images/orange.png';
 import Purple from '../images/purple.png';
@@ -56,10 +55,8 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const Root = () => {
-  const { theme: { rootBackground: background } } = useContext(ThemeContext);
   const styles = useStyles();
   const { dark } = themes;
-  console.log('dark', dark);
   return (
     <div className={styles.container}>
       <Box flex={1} display="flex" alignItems="center">
@@ -75,20 +72,20 @@ const Root = () => {
           </IconButton>
         </Box>
         <ThemeProvider theme={dark}>
-        <Box display="flex" flexDirection="row">
-          <IconButton target="_blank" href="https://github.com/emaLorenzo">
-            <FontAwesomeIcon icon={faGithub} />
-          </IconButton>
-          <IconButton target="_blank" href="https://www.linkedin.com/in/emanuellorenzo">
-            <FontAwesomeIcon icon={faLinkedin} />
-          </IconButton>
-          <IconButton target="_blank" href="http://instagram.com/aemalorenzo">
-            <FontAwesomeIcon icon={faInstagram} />
-          </IconButton>
-          <IconButton target="_blank" href="https://www.facebook.com/aemalorenzo">
-            <FontAwesomeIcon icon={faFacebook} />
-          </IconButton>
-        </Box>
+          <Box display="flex" flexDirection="row">
+            <IconButton target="_blank" href="https://github.com/emaLorenzo">
+              <FontAwesomeIcon icon={faGithub} />
+            </IconButton>
+            <IconButton target="_blank" href="https://www.linkedin.com/in/emanuellorenzo">
+              <FontAwesomeIcon icon={faLinkedin} />
+            </IconButton>
+            <IconButton target="_blank" href="http://instagram.com/aemalorenzo">
+              <FontAwesomeIcon icon={faInstagram} />
+            </IconButton>
+            <IconButton target="_blank" href="https://www.facebook.com/aemalorenzo">
+              <FontAwesomeIcon icon={faFacebook} />
+            </IconButton>
+          </Box>
         </ThemeProvider>
       </div>
       <SwitchButtonContainer>
