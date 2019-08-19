@@ -35,13 +35,13 @@ const useStyles = makeStyles(theme => ({
       25%,
       ${props.isDesktop ? '20%' : '50%'},
       20%,
-      ${props.isDesktop ? '30%' : '80%'}`,
+      ${props.isDesktop ? 'auto 50%' : '80%'}`,
     backgroundRepeat: 'no-repeat',
     backgroundPosition: props => `
       25% 70%,
       -10% -10%,
       75% 25%,
-      ${props.isDesktop ? '110% 180%' : '50% 130%'}
+      ${props.isDesktop ? '110% 150%' : '50% 130%'}
     `, 
   }
 }));
