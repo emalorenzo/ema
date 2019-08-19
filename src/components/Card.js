@@ -7,6 +7,7 @@ import Button from '@material-ui/core/Button';
 import Badge from '@material-ui/core/Badge';
 import Avatar from '@material-ui/core/Avatar';
 import amber from '@material-ui/core/colors/amber';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import EmaFormal from '../images/ema_formal.jpg';
 import ReactIcon from '../images/reactIcon.png';
@@ -22,7 +23,7 @@ const useStyles = makeStyles(theme => ({
     borderRadius: '50%',
   },
   card: {
-    width: '50vw',
+    width: props => props.isDesktop ? '50vw' : '100%',
     backgroundSize: 'cover',
     backgroundPosition: 'center center',
     display: 'flex',
@@ -32,7 +33,7 @@ const useStyles = makeStyles(theme => ({
     overflow: 'hidden',
     borderRadius: theme.spacing(2),
     background: theme.cardBackground,
-    padding: theme.spacing(8),
+    padding: props => props.isDesktop ? theme.spacing(8) : theme.spacing(4),
   },
   namesContainer: {
     display: 'flex',
@@ -56,12 +57,15 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const Card = () => {
-  const styles = useStyles({ color: amber[500] });
+  const isDesktop = useMediaQuery('(min-width:800px)');
+  const styles = useStyles({ color: amber[500], isDesktop });
   return (
     <Paper elevation={2} className={styles.card}>
-      <Box display="flex" flexDirection="row" justifyContent="space-between" alignSelf="stretch">
-        <Box display="flex" flexDirection="row" alignItems="center" pb={2}> 
-          <img alt="Ema Lorenzo" src={EmaFormal} className={styles.avatar} />
+      <Box display="flex" flexDirection="row" justifyContent="space-between" alignSelf="stretch" flexWrap="wrap">
+        <Box display="flex" flexDirection="row" alignItems="center" pb={1}> 
+          <div>
+            <img alt="Ema Lorenzo" src={EmaFormal} className={styles.avatar} />
+          </div>
           <div className={styles.namesContainer}>
             <Typography variant="h5">
               Emanuel Lorenzo
@@ -87,14 +91,16 @@ const Card = () => {
           </Typography>
         </Box>
       </Box>
-      <Typography variant="body1">
-        I am a versatile software engineer with large experience working with mobile technologies. My career started with native Android, then went to web with React and now I am merging the best of both with React Native. I have experience leading teams, and am always looking for create a great business culture.
-      </Typography>
+      <Box pt={1}>
+        <Typography variant="body1">
+         I am a versatile software engineer with large experience working with mobile technologies. My career started with native Android, then went to web with React and now I am merging the best of both with React Native. I have experience leading teams, and am always looking for create a great business culture.
+        </Typography>
+      </Box>
       <Button variant="outlined" className={styles.knowMoreButton}>
         Know more
         <ChevronRightIcon />
       </Button>
-      <Box display="flex" flexDirection="row">
+      <Box display="flex" flexDirection="row" mt={{ xs: 2, md: 0 }}>
         <Avatar alt="Ema Lorenzo" src={ReactIcon} className={styles.techIcon} />
         <Avatar alt="Ema Lorenzo" src={ReduxIcon} className={styles.techIcon} />
         <Avatar alt="Ema Lorenzo" src={ReduxSagaIcon} className={styles.techIcon} />
